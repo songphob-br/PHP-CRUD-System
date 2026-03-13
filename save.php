@@ -5,6 +5,7 @@ $name = $_POST['name'];           // ชื่อสินค้า
 $category = $_POST['category'];   // หมวดหมู่สินค้า
 $price = $_POST['price'];         // ราคาสินค้า
 $description = $_POST['description']; // รายละเอียดสินค้า
+$user_id = (int)$_POST['user_id']; // ตัวอย่าง user_id ที่กำหนดไว้ล่วงหน้า (ในระบบจริงควรใช้ session หรือวิธีอื่นในการระบุผู้ใช้)
 
 // กำหนดตัวแปรเก็บชื่อรูปภาพ เริ่มต้นเป็นค่าว่าง
 $img_name = "";
@@ -30,9 +31,8 @@ if (!empty($_FILES['img']['name'])) {
    บันทึกข้อมูลลงฐานข้อมูล
    ========================= */
 
-$sql = "INSERT INTO products (name, category, price, description, img)
-        VALUES ('$name', '$category', '$price', '$description', '$img_name')";
-
+$sql = "INSERT INTO products (name, category, price, description, img, user_id)
+VALUES ('$name', '$category', '$price', '$description', '$img_name', '$user_id')";
 // สั่งให้ฐานข้อมูลทำงานตามคำสั่ง SQL
 $conn->query($sql);
 
