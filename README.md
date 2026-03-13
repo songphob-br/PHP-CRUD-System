@@ -20,7 +20,7 @@ This project was built for learning backend fundamentals and database integratio
 - HTML5
 - CSS3
 - Bootstrap
-- XAMPP / Laragon
+-  Laragon
 
 ---
 
