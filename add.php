@@ -1,3 +1,8 @@
+<?php
+include 'db.php';
+
+$users = $conn->query("SELECT * FROM users");
+?>
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -12,6 +17,19 @@
 
   <!-- สำคัญ: enctype -->
   <form action="save.php" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+  <label class="form-label">ผู้ขาย</label>
+<select name="user_id" class="form-control" required>
+<option value="">-- เลือกผู้ขาย --</option>
+
+<?php while($u = $users->fetch_assoc()) { ?>
+<option value="<?= $u['id'] ?>">
+<?= htmlspecialchars($u['username']) ?>
+</option>
+<?php } ?>
+
+</select>
+</div>
 
     <div class="mb-3">
       <label class="form-label">ชื่อสินค้า</label>
